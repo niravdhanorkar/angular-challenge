@@ -1,0 +1,32 @@
+/* new */
+.container{
+  width: 400px;
+  height: 600px;
+  overflow-y: hidden;
+  border: 1px solid;
+}
+.header{
+  height: 100px;
+  background-color: red;
+  margin-bottom: 5px;
+}
+.body{
+  height: 400px;
+}
+.scrollBody {
+  overflow-y: auto;
+  height: 250px;
+  display: block;
+}
+.footer{
+  height: 100px;
+  background-color: blue;
+  padding-top: 34px
+}
+.textbox1{
+  margin-left: 15px;
+}
+.sendbutton{
+  float: right;
+  margin-right: 25px;
+}

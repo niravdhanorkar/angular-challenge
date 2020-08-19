@@ -1,0 +1,60 @@
+
+<div class="container ">
+  <div class="header">
+    Header area- some text
+  </div>
+  <div class="body">
+    <div [formGroup]="req_form1">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="input1" placeholder="req, max-50 length">
+          <span class="text-danger" *ngIf="req_form1.controls['input1'].hasError('required') && (req_form1.controls['input1'].dirty || req_form1.controls['input1'].touched)">This field is required</span>
+          <span class="text-danger" *ngIf="req_form1.controls['input1'].hasError('maxlength') && (req_form1.controls['input1'].dirty || req_form1.controls['input1'].touched)">Lenght more than 50</span>
+        </div>
+
+        <div class="form-group">
+          <input type="number" class="form-control" formControlName="input2" placeholder="req,0-10000">
+          <span class="text-danger" *ngIf="req_form1.controls['input2'].hasError('required') && (req_form1.controls['input2'].dirty || req_form1.controls['input2'].touched)">This field is required</span>
+          <span class="text-danger" *ngIf="req_form1.controls['input2'].hasError('min') && (req_form1.controls['input2'].dirty || req_form1.controls['input2'].touched)">Minimum 0</span>
+          <span class="text-danger" *ngIf="req_form1.controls['input2'].hasError('max') && (req_form1.controls['input2'].dirty || req_form1.controls['input2'].touched)">Maximum 10000</span>
+          <!-- <span class="text-danger" *ngIf="req_form1.controls['input2'].hasError('pattern') && (req_form1.controls['input2'].dirty || req_form1.controls['input2'].touched)">Max decimal 2 places</span> -->
+        </div>
+
+        <table class="table scrollBody" *ngIf="httpList.length > 0; else noHttpCallsYet">
+          <colgroup>
+            <col width="10%" />
+            <col width="*" />
+            <col width="5%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Timestamp</th>
+              <th scope="col">Message</th>
+              <th scope="col">Number</th>
+           </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let httpCall of httpList;" >
+              <td>{{ httpCall.timestamp }}</td>
+              <td>{{ httpCall.message }}</td>
+              <td>{{ httpCall.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noHttpCallsYet>
+          <p>No http calls yet.</p>
+        </ng-template>
+
+
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <input class='textbox1' [(ngModel)]="httpnumber" type="number" placeholder="http-number">
+    <input class='sendbutton' type="button" value="send" (click)="getHttpData()" />
+  </div>
+
+</div>
